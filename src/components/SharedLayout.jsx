@@ -1,8 +1,9 @@
+import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import { Container, Header, Link } from './SharedLayout.styled';
 
-export const SharedLayout = props => {
+const SharedLayout = props => {
   const { handleOnMovies } = props;
   return (
     <Container>
@@ -16,7 +17,9 @@ export const SharedLayout = props => {
           </Link>
         </nav>
       </Header>
-      <Outlet />
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };
@@ -24,3 +27,4 @@ export const SharedLayout = props => {
 SharedLayout.propTypes = {
   handleOnMovies: PropTypes.func.isRequired,
 };
+export default SharedLayout;

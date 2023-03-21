@@ -7,7 +7,7 @@ import {
   Icon,
 } from './SearchBox.styled';
 
-export const SearchBox = props => {
+const SearchBox = props => {
   const { handleSubmit } = props;
   return (
     <Wrapper>
@@ -24,3 +24,5 @@ export const SearchBox = props => {
 SearchBox.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
+
+export default SearchBox;

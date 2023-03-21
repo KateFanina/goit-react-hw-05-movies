@@ -3,7 +3,7 @@ import { getTranding } from '../actions/action';
 import MovieList from '../components/MovieList';
 import { MainDiv } from '../pages/Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trands, setTrands] = useState([]);
   useEffect(() => {
     const fetchTrandings = async () => {
@@ -25,3 +25,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

@@ -1,13 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { MovieDetails } from '../pages/MovieDetails';
-import { Cast } from '../components/Cast';
-import { Reviews } from '../components/Reviews';
-import { Movies } from '../pages/Movies';
-import { SharedLayout } from './SharedLayout';
 import { searchMovie } from '../actions/action';
+// import { SharedLayout } from './SharedLayout';
+const SharedLayout = lazy(() => import('./SharedLayout'));
+
+const Home = lazy(() => import('../pages/Home'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Cast = lazy(() => import('../components/Cast'));
+const Reviews = lazy(() => import('../components/Reviews'));
+const Movies = lazy(() => import('../pages/Movies'));
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -41,10 +43,10 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/movies" element={<Movies movies={movies} />} />
         <Route path="/movies/:id" element={<MovieDetails />}>
-          <Route path="/movies/:id/cast" element={<Cast />} />
-          <Route path="/movies/:id/reviews" element={<Reviews />} />
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<Home movies={movies} />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import emptyPoster from '../resources/emptyPoster.webp';
 import { Li, CastLink, Person } from '../components/Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const [casts, setCasts] = useState([]);
   const location = useLocation();
@@ -49,3 +49,5 @@ export const Cast = () => {
     </section>
   );
 };
+
+export default Cast;

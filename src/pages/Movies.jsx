@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
-import { SearchBox } from '../components/SearchBox';
+import SearchBox from '../components/SearchBox';
 import MovieList from '../components/MovieList';
 
-export const Movies = props => {
+const Movies = props => {
   const { movies } = props;
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -25,3 +25,5 @@ export const Movies = props => {
 Movies.propTypes = {
   movies: PropTypes.array.isRequired,
 };
+
+export default Movies;

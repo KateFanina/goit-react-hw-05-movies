@@ -1,7 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { BackLink } from 'components/BackLink';
+import BackLink from 'components/BackLink';
 import { getMovieDetails } from '../actions/action';
 import emptyPoster from '../resources/emptyPoster.webp';
 import {
@@ -15,7 +16,7 @@ import {
   LinkA,
 } from '../pages/MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState({});
 
@@ -78,9 +79,13 @@ export const MovieDetails = () => {
               </AdditItem>
             </AdditList>
           </AdditInfo>
-          <Outlet />
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </main>
   );
 };
+
+export default MovieDetails;
